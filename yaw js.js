@@ -72,9 +72,9 @@ function DodgeBruteforce(){
     }else{
         var tick = Globals.Tickcount();
         if (tick % 2 == 0){
-            UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Jitter offset", -3);
+            UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Jitter offset", 0);
         }else{
-            UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Jitter offset", 3);
+            UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Jitter offset", 0);
         }
         AntiAim.SetOverride(0);
     }
@@ -177,7 +177,7 @@ function betterYaw2(){
             UI.SetValue("Anti-Aim",  "Fake angles","Avoid overlap", true);
             UI.SetValue("Anti-Aim", "Extra", "Jitter move", true);
             UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 0);
-            //UI.SetValue("Anti-Aim", "Fake angles", "Inverter flip", ["Walk", "Run", " In air"]);
+            UI.SetValue("Anti-Aim", "Fake angles", "Inverter flip", ["Walk", "Run", " In air"]);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
             
