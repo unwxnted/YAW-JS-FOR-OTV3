@@ -25,7 +25,7 @@ function indicator() {
 		return;
 
 
-    Render.StringCustom(screen_size[0] / 2 + 10, screen_size[1] - 500, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
+    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 580, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
 
 
 	
