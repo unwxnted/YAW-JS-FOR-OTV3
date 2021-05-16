@@ -116,7 +116,7 @@ function betterYAW1(){
 
     var real = randomIntFrom(-80,80);
     var lby = randomIntFrom(-132,118);
-
+    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 500, 30, String(real), [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "F4STZyaw")){
 
@@ -316,7 +316,6 @@ function indicator() {
 
 
     Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
-    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 500, 30, String(real), [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
 
 
 	
