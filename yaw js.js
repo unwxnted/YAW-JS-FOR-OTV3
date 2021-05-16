@@ -177,7 +177,7 @@ function betterYaw2(){
             UI.SetValue("Anti-Aim",  "Fake angles","Avoid overlap", true);
             UI.SetValue("Anti-Aim", "Extra", "Jitter move", true);
             UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 0);
-            UI.SetValue("Anti-Aim", "Fake angles", "Inverter flip", ["Walk", "Run", " In air"]);
+            //UI.SetValue("Anti-Aim", "Fake angles", "Inverter flip", ["Walk", "Run", " In air"]);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
             
