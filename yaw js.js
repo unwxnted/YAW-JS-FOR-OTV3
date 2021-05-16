@@ -2,6 +2,7 @@
 // UI
 
 UI.AddLabel("Welcome to F4STZSense");
+UI.AddCheckbox("Resolver");
 UI.AddHotkey("DodgeBruteforce");
 UI.AddCheckbox("F4STZyaw");
 UI.AddCheckbox("Fastest DT");
@@ -40,6 +41,24 @@ function randomIntFrom(min,max)
 }
 
 
+function resolver(){
+
+    if (UI.GetValue("Misc", "JAVASCRIPT", "Script items", "Resolver")) {
+        
+        CreateMove(ForceTarget(Head,Pelvis,random.math(-56,56)));
+        CreateMove(ForceHitboxSafety(Head),random.math(-77,56))(AntiAim.ForceHitboxSafety(-56,56));
+        CreateMove(ForceTargetSafety(Head),random.math(-60,60));
+        CreateMove(ForceTargetMiniumDamage,random.min(-101,101));
+        CreateMove(UI.SetValue("Rage", "Scout", "HeadPoint Scale", 75));
+        CreateMove(ForceTargetHitchance,random.min(74,85));  // safe values: 73, 85
+        
+    }
+
+
+
+}
+
+
 function DodgeBruteforce(){
 
     if (UI.IsHotkeyActive("Misc", "JAVASCRIPT", "Script items", "DodgeBruteforce")){
@@ -69,20 +88,25 @@ function lagsync(){
 
         var tick = Globals.Tickcount(); 
 
-        var RandomfakeLag = Math.random() * (16 - 8) + 8;
+        //var RandomfakeLag = Math.random() * (16 - 8) + 8;
 
-        UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", RandomfakeLag);
+        //UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", RandomfakeLag);
 
         if (tick % 2 == 0){
 
-            UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 0);
-            UI.SetValue("Anti-Aim", "Fake-Lag", "Enabled", false);
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 52);
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", 12);
 
 
 
+        }else if(tick % 5 == 0){
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", 2);
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 5);
+        
         }else{
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", 6);
             UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 32);
-            UI.SetValue("Anti-Aim", "Fake-Lag", "Enabled", true);
+        
         }
 
 
@@ -202,7 +226,7 @@ function legBreaker(){
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "leg breaker")){
         var tick = Globals.Tickcount();
             
-        if(tick % 2 == 0){
+        if(tick % 5 == 0){
             UI.SetValue("Misc", "General", "Movement", "Slide walk", true);
             UI.SetValue("Misc", "General", "Movement", "Accurate walk", true);
         }else{
