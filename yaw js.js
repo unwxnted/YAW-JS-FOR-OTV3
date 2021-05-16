@@ -315,15 +315,15 @@ function DT(){
         
         function _TBC_CREATE_MOVE() {
             var H = Exploit.GetCharge(); //444
-            var I = UI.GetValue('Misc', 'JAVASCRIPT', 'Script items', 'Double tap tolerance'); //445
+            //var I = UI.GetValue('Misc', 'JAVASCRIPT', 'Script items', 'Double tap tolerance'); //445
             Exploit[(H != 1 ? 'Enable' : 'Disable') + 'Recharge']();
             if (can_shift_shot(16) && H != 1) {
                 Exploit.DisableRecharge();
                 Exploit.Recharge()
             }
         
-            Exploit.OverrideTolerance(I);
-            Exploit.OverrideShift(16 - I)
+            Exploit.OverrideTolerance(1);
+            Exploit.OverrideShift(16 - 1)
         }
         
         function _TBC_UNLOAD() {
