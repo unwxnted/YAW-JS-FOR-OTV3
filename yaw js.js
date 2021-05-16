@@ -94,7 +94,7 @@ function lagsync(){
 
         if (tick % 2 == 0){
 
-            UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 52);
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 10);
             UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", 12);
 
 
