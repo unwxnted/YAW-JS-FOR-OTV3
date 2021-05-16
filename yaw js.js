@@ -11,8 +11,15 @@ UI.AddCheckbox("LagSync Breaker");
 UI.AddCheckbox("Slow walk Breaker(Not have dt)");
 UI.AddCheckbox("leg breaker");
 
-// watermark
+function randomIntFrom(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
 
+
+// watermark
+var real = randomIntFrom(-80,80);
+var lby = randomIntFrom(-132,118);
 
 function indicator() {
 	var h = [];
@@ -26,6 +33,7 @@ function indicator() {
 
 
     Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
+    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, real, [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
 
 
 	
@@ -35,10 +43,7 @@ function indicator() {
 
 Inverted = UI['IsHotkeyActive']('Anti-Aim', 'Fake angles', 'Inverter');
 
-function randomIntFrom(min,max)
-{
-    return Math.floor(Math.random()*(max-min+1)+min);
-}
+
 
 
 function resolver(){
@@ -133,8 +138,7 @@ function betterYAW1(){
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "F4STZyaw")){
 
-        var real = randomIntFrom(-80,80);
-        var lby = randomIntFrom(-132,118);
+        
 
 
         if(Inverted){
