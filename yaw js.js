@@ -44,7 +44,7 @@ function randomIntFrom(min,max)
 function resolver(){
 
     if (UI.GetValue("Misc", "JAVASCRIPT", "Script items", "Resolver")) {
-        
+
         CreateMove(ForceTarget(Head,Pelvis,random.math(-56,56)));
         CreateMove(ForceHitboxSafety(Head),random.math(-77,56))(AntiAim.ForceHitboxSafety(-56,56));
         CreateMove(ForceTargetSafety(Head),random.math(-60,60));
@@ -133,17 +133,20 @@ function betterYAW1(){
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "F4STZyaw")){
 
+        var real = randomIntFrom(-80,80);
+
+
         if(Inverted){
             AntiAim.SetOverride(1);
             AntiAim.SetFakeOffset(0x1a);
-            AntiAim['SetRealOffset'](-0x55);
+            AntiAim['SetRealOffset'](real);
             AntiAim['SetLBYOffset'](0x76);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
         }else{
             AntiAim.SetOverride(1);
             AntiAim['SetFakeOffset'](-0x10);
-            AntiAim['SetRealOffset'](0xa2);
+            AntiAim['SetRealOffset'](real);
             AntiAim['SetLBYOffset'](-0x84);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
