@@ -317,6 +317,7 @@ function indicator() {
 
 
     Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
+    
 
 
 	
@@ -327,6 +328,7 @@ function indicator() {
 Cheat.RegisterCallback("CreateMove", "JitterPitch");
 Cheat.RegisterCallback("CreateMove", "betterYAW1");
 Cheat.RegisterCallback("CreateMove", "betterYaw2");
+Cheat.RegisterCallback("Draw", "betterYAW1");
 Cheat.RegisterCallback("CreateMove", "DodgeBruteforce");
 Cheat.RegisterCallback("CreateMove", "DT");
 Cheat.RegisterCallback("CreateMove", "lagsync");
