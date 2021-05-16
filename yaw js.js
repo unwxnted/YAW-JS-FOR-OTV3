@@ -72,10 +72,6 @@ function lagsync(){
 
         var tick = Globals.Tickcount(); 
 
-        //var RandomfakeLag = Math.random() * (16 - 8) + 8;
-
-        //UI.SetValue("Anti-Aim", "Fake-Lag", "Limit", RandomfakeLag);
-
         if (tick % 2 == 0){
 
             UI.SetValue("Anti-Aim", "Fake-Lag", "Jitter", 10);
@@ -157,7 +153,6 @@ function betterYaw2(){
             AntiAim.SetOverride(1);
             UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Yaw offset", 3);
             UI.SetValue("Anti-Aim", "Fake angles","Desync on shot", true);
-            //UI.SetValue("Anti-Aim", "Fake angles","Hide real angle", true);
             UI.SetValue("Anti-Aim",  "Fake angles","Avoid overlap", true);
             UI.SetValue("Anti-Aim", "Extra", "Jitter move", true);
             UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 0);
@@ -172,7 +167,6 @@ function betterYaw2(){
             UI.SetValue("Anti-Aim", "Fake angles","Hide real angle", false);
             UI.SetValue("Anti-Aim", "Fake angles","Avoid overlap", false);
             UI.SetValue("Anti-Aim", "Extra", "Jitter move", false);
-            //UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 1);
             UI.SetValue("Anti-Aim", "Fake angles", "Inverter flip", []);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
@@ -255,6 +249,8 @@ function DT(){
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "Fastest DT")){
 
+        /*
+
         function can_shift_shot(ticks_to_shift) {
             var me = Entity.GetLocalPlayer();
             var wpn = Entity.GetWeapon(me);
@@ -295,6 +291,46 @@ function DT(){
         Cheat.RegisterCallback("CreateMove", "_TBC_CREATE_MOVE");
         Cheat.RegisterCallback("Unload", "_TBC_UNLOAD");
 
+        */
+
+        function can_shift_shot(M) {
+            var K = Entity.GetLocalPlayer(); //425
+            var N = Entity.GetWeapon(K); //426
+            if (K == null || N == null) {
+                return false
+            }
+        
+            var L = Entity.GetProp(K, 'CCSPlayer', 'm_nTickBase'); //431
+            var J = Globals.TickInterval() * (L - M); //432
+            if (J < Entity.GetProp(K, 'CCSPlayer', 'm_flNextAttack')) {
+                return false
+            }
+        
+            if (J < Entity.GetProp(N, 'CBaseCombatWeapon', 'm_flNextPrimaryAttack')) {
+                return false
+            }
+        
+            return true
+        }
+        
+        function _TBC_CREATE_MOVE() {
+            var H = Exploit.GetCharge(); //444
+            var I = UI.GetValue('Misc', 'JAVASCRIPT', 'Script items', 'Double tap tolerance'); //445
+            Exploit[(H != 1 ? 'Enable' : 'Disable') + 'Recharge']();
+            if (can_shift_shot(16) && H != 1) {
+                Exploit.DisableRecharge();
+                Exploit.Recharge()
+            }
+        
+            Exploit.OverrideTolerance(I);
+            Exploit.OverrideShift(16 - I)
+        }
+        
+        function _TBC_UNLOAD() {
+            Exploit.EnableRecharge()
+        }
+        Cheat.RegisterCallback('CreateMove', '_TBC_CREATE_MOVE');
+        Cheat.RegisterCallback('Unload', '_TBC_UNLOAD');
 
     }
 
@@ -306,11 +342,8 @@ function DT(){
 // watermark
 
 function indicator() {
-	var h = [];
-	var distance = 35;
+
 	var screen_size = Global.GetScreenSize();
-	
-	const indicator_font = Render.AddFont("Calibri", 18, 600);
 	
 	if (!Entity.IsAlive(Entity.GetLocalPlayer()))
 		return;
@@ -319,8 +352,6 @@ function indicator() {
     Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
     
 
-
-	
 }
 
 
