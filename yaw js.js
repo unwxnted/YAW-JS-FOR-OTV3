@@ -119,7 +119,6 @@ function betterYAW1(){
 
         if(Inverted){
             AntiAim.SetOverride(1);
-            UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Jitter offset", 20);
             AntiAim.SetFakeOffset(0x1a);
             AntiAim['SetRealOffset'](real);
             AntiAim['SetLBYOffset'](lby);
