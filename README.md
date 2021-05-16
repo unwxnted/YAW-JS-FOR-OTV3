@@ -1,6 +1,7 @@
 I made a YAW js for OTv3
 
 features:
+- Resolver
 - Dodgebruteforce
 - Custom yaw
 - Faster DT
