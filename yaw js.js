@@ -141,14 +141,14 @@ function betterYAW1(){
             AntiAim.SetOverride(1);
             AntiAim.SetFakeOffset(0x1a);
             AntiAim['SetRealOffset'](real);
-            AntiAim['SetLBYOffset'](0x76);
+            AntiAim['SetLBYOffset'](lby);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
         }else{
             AntiAim.SetOverride(1);
             AntiAim['SetFakeOffset'](-0x10);
             AntiAim['SetRealOffset'](real);
-            AntiAim['SetLBYOffset'](-0x84);
+            AntiAim['SetLBYOffset'](lby);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
         }
@@ -188,7 +188,7 @@ function betterYaw2(){
             UI.SetValue("Anti-Aim", "Fake angles","Hide real angle", false);
             UI.SetValue("Anti-Aim", "Fake angles","Avoid overlap", false);
             UI.SetValue("Anti-Aim", "Extra", "Jitter move", false);
-            UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 1);
+            //UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 1);
             UI.SetValue("Anti-Aim", "Fake angles", "Inverter flip", []);
             UI.ToggleHotkey("Anti-Aim", "Fake angles", "inverter");
             AntiAim.SetOverride(0);
