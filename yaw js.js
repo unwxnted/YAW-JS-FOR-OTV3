@@ -249,59 +249,16 @@ function DT(){
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "Fastest DT")){
 
-        /*
-
-        function can_shift_shot(ticks_to_shift) {
-            var me = Entity.GetLocalPlayer();
-            var wpn = Entity.GetWeapon(me);
-        
-            if (me == null || wpn == null)
-                return false;
-        
-            var tickbase = Entity.GetProp(me, "CCSPlayer", "m_nTickBase");
-            var curtime = Globals.TickInterval() * (tickbase-1-ticks_to_shift)
-        
-            if (curtime < Entity.GetProp(me, "CCSPlayer", "m_flNextAttack"))
-                return false;
-        
-            if (curtime < Entity.GetProp(wpn, "CBaseCombatWeapon", "m_flNextPrimaryAttack"))
-                return false;
-        
-            return true;
-        }
-        
-        function _TBC_CREATE_MOVE() {
-            var is_charged = Exploit.GetCharge()
-            var reserve = 1
-            Exploit[(is_charged != 1 ? "Enable" : "Disable") + "Recharge"]()
-        
-            if (can_shift_shot(22) && is_charged != 1) {
-                Exploit.DisableRecharge();
-                Exploit.Recharge()
-            }
-        
-            Exploit.OverrideTolerance(14-reserve);
-            Exploit.OverrideShift(16-reserve);
-        }
-        
-        function _TBC_UNLOAD() {
-            Exploit.EnableRecharge(1);
-        }
-        
-        Cheat.RegisterCallback("CreateMove", "_TBC_CREATE_MOVE");
-        Cheat.RegisterCallback("Unload", "_TBC_UNLOAD");
-
-        */
 
         function can_shift_shot(M) {
-            var K = Entity.GetLocalPlayer(); //425
-            var N = Entity.GetWeapon(K); //426
+            var K = Entity.GetLocalPlayer(); 
+            var N = Entity.GetWeapon(K); 
             if (K == null || N == null) {
                 return false
             }
         
-            var L = Entity.GetProp(K, 'CCSPlayer', 'm_nTickBase'); //431
-            var J = Globals.TickInterval() * (L - M); //432
+            var L = Entity.GetProp(K, 'CCSPlayer', 'm_nTickBase'); 
+            var J = Globals.TickInterval() * (L - M); 
             if (J < Entity.GetProp(K, 'CCSPlayer', 'm_flNextAttack')) {
                 return false
             }
@@ -314,8 +271,7 @@ function DT(){
         }
         
         function _TBC_CREATE_MOVE() {
-            var H = Exploit.GetCharge(); //444
-            //var I = UI.GetValue('Misc', 'JAVASCRIPT', 'Script items', 'Double tap tolerance'); //445
+            var H = Exploit.GetCharge(); 
             Exploit[(H != 1 ? 'Enable' : 'Disable') + 'Recharge']();
             if (can_shift_shot(16) && H != 1) {
                 Exploit.DisableRecharge();
@@ -357,7 +313,7 @@ function indicator() {
 
 // callbacks
 Cheat.RegisterCallback("CreateMove", "JitterPitch");
-Cheat.RegisterCallback("CreateMove", "betterYAW1");
+//Cheat.RegisterCallback("CreateMove", "betterYAW1");
 Cheat.RegisterCallback("CreateMove", "betterYaw2");
 Cheat.RegisterCallback("Draw", "betterYAW1");
 Cheat.RegisterCallback("CreateMove", "DodgeBruteforce");
