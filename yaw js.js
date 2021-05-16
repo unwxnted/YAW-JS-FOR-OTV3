@@ -173,7 +173,7 @@ function betterYaw2(){
             AntiAim.SetOverride(1);
             UI.SetValue("Anti-Aim", "Rage Anti-Aim", "Yaw offset", 3);
             UI.SetValue("Anti-Aim", "Fake angles","Desync on shot", true);
-            UI.SetValue("Anti-Aim", "Fake angles","Hide real angle", true);
+            //UI.SetValue("Anti-Aim", "Fake angles","Hide real angle", true);
             UI.SetValue("Anti-Aim",  "Fake angles","Avoid overlap", true);
             UI.SetValue("Anti-Aim", "Extra", "Jitter move", true);
             UI.SetValue("Anti-Aim", "Fake angles", "LBY mode", 0);
