@@ -114,12 +114,11 @@ function Flip(){
 
 function betterYAW1(){
 
+    var real = randomIntFrom(-80,80);
+    var lby = randomIntFrom(-132,118);
+
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "F4STZyaw")){
-
-        var real = randomIntFrom(-80,80);
-        var lby = randomIntFrom(-132,118);
-
 
         if(Inverted){
             AntiAim.SetOverride(1);
