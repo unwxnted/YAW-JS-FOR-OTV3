@@ -11,38 +11,17 @@ UI.AddCheckbox("LagSync Breaker");
 UI.AddCheckbox("Slow walk Breaker(Not have dt)");
 UI.AddCheckbox("leg breaker");
 
+
+
+// functions 
+
 function randomIntFrom(min,max)
 {
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 
-// watermark
-var real = randomIntFrom(-80,80);
-var lby = randomIntFrom(-132,118);
-
-function indicator() {
-	var h = [];
-	var distance = 35;
-	var screen_size = Global.GetScreenSize();
-	
-	const indicator_font = Render.AddFont("Calibri", 18, 600);
-	
-	if (!Entity.IsAlive(Entity.GetLocalPlayer()))
-		return;
-
-
-    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
-    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 500, 30, String(real), [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
-
-
-	
-}
-
-// functions 
-
 Inverted = UI['IsHotkeyActive']('Anti-Aim', 'Fake angles', 'Inverter');
-
 
 
 
@@ -138,7 +117,8 @@ function betterYAW1(){
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "F4STZyaw")){
 
-        
+        var real = randomIntFrom(-80,80);
+        var lby = randomIntFrom(-132,118);
 
 
         if(Inverted){
@@ -319,6 +299,28 @@ function DT(){
     }
 
 
+}
+
+
+
+// watermark
+
+function indicator() {
+	var h = [];
+	var distance = 35;
+	var screen_size = Global.GetScreenSize();
+	
+	const indicator_font = Render.AddFont("Calibri", 18, 600);
+	
+	if (!Entity.IsAlive(Entity.GetLocalPlayer()))
+		return;
+
+
+    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
+    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 500, 30, String(real), [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
+
+
+	
 }
 
 
