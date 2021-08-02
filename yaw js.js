@@ -6,6 +6,7 @@ UI.AddCheckbox("Resolver");
 UI.AddHotkey("DodgeBruteforce");
 UI.AddCheckbox("F4STZyaw");
 UI.AddCheckbox("Fastest DT");
+UI.AddCheckbox("Ideal tick");
 UI.AddCheckbox("Jitter pitch (Untrusted Mode)");
 UI.AddCheckbox("LagSync Breaker");
 UI.AddCheckbox("Slow walk Breaker(Not have dt)");
@@ -21,9 +22,9 @@ function randomIntFrom(min,max)
 }
 
 
-Inverted = UI['IsHotkeyActive']('Anti-Aim', 'Fake angles', 'Inverter');
+Inverted = UI('IsHotkeyActive')('Anti-Aim', 'Fake angles', 'Inverter');
 
-
+// RESOLVER 
 
 function resolver(){
 
@@ -35,13 +36,13 @@ function resolver(){
         CreateMove(ForceTargetMiniumDamage,random.min(-101,101));
         CreateMove(UI.SetValue("Rage", "Scout", "HeadPoint Scale", 75));
         CreateMove(ForceTargetHitchance,random.min(74,85));  // safe values: 73, 85
-        
+
     }
-
-
 
 }
 
+
+// DODGEBRUTEFORCE
 
 function DodgeBruteforce(){
 
@@ -65,6 +66,8 @@ function DodgeBruteforce(){
 
 
 }
+
+// LAGSYNC
 
 function lagsync(){
 
@@ -95,7 +98,7 @@ function lagsync(){
 
 }
 
-
+// FLIP FUNCTION
 
 function Flip(){
 
@@ -107,6 +110,7 @@ function Flip(){
     
 }
 
+// THE FIRST PART OF THE YAW
 
 function betterYAW1(){
 
@@ -140,7 +144,7 @@ function betterYAW1(){
 }
 
 
-
+// THE SECOND PART OF THE YAW
 
 function betterYaw2(){
 
@@ -181,6 +185,7 @@ function betterYaw2(){
 }
 
 
+// JITTER PITCH
 
 function JitterPitch(){
 
@@ -201,6 +206,7 @@ function JitterPitch(){
 
 }
 
+// LEG BREAKER
 
 function legBreaker(){
 
@@ -221,6 +227,8 @@ function legBreaker(){
     }
 
 }
+
+// SLOW_WALK EXPLOIT
 
 function SlowWalk_EXPLOIT(){
 
@@ -244,55 +252,34 @@ function SlowWalk_EXPLOIT(){
 
 }
 
+// IDEAL TICK
+
+function ideal_tick() {
+    if (UI.GetValue("Script items", "Ideal tick")) {
+        if (UI.IsHotkeyActive("Rage", "Exploits", "Doubletap") & UI.IsHotkeyActive("Misc", "Movement", "Auto peek") || UI.IsHotkeyActive("Script items", "Auto throw")){
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Enabled", 0);
+        }else{
+            UI.SetValue("Anti-Aim", "Fake-Lag", "Enabled", 1);
+        }
+    }
+    else{
+        UI.SetValue("Anti-Aim", "Fake-Lag", "Enabled", 1);
+    }
+        
+}
+
+//DT
 
 function DT(){
 
     if(UI.GetValue("Misc", "JAVASCRIPT", "Script items", "Fastest DT")){
 
-
-        function can_shift_shot(M) {
-            var K = Entity.GetLocalPlayer(); 
-            var N = Entity.GetWeapon(K); 
-            if (K == null || N == null) {
-                return false
-            }
-        
-            var L = Entity.GetProp(K, 'CCSPlayer', 'm_nTickBase'); 
-            var J = Globals.TickInterval() * (L - M); 
-            if (J < Entity.GetProp(K, 'CCSPlayer', 'm_flNextAttack')) {
-                return false
-            }
-        
-            if (J < Entity.GetProp(N, 'CBaseCombatWeapon', 'm_flNextPrimaryAttack')) {
-                return false
-            }
-        
-            return true
-        }
-        
-        function _TBC_CREATE_MOVE() {
-            var H = Exploit.GetCharge(); 
-            Exploit[(H != 1 ? 'Enable' : 'Disable') + 'Recharge']();
-            if (can_shift_shot(16) && H != 1) {
-                Exploit.DisableRecharge();
-                Exploit.Recharge()
-            }
-        
-            Exploit.OverrideTolerance(1);
-            Exploit.OverrideShift(16 - 1)
-        }
-        
-        function _TBC_UNLOAD() {
-            Exploit.EnableRecharge()
-        }
-        Cheat.RegisterCallback('CreateMove', '_TBC_CREATE_MOVE');
-        Cheat.RegisterCallback('Unload', '_TBC_UNLOAD');
+        Exploit.OverrideTolerance(1);
+        Exploit.OverrideShift(20);
 
     }
 
-
 }
-
 
 
 // watermark
@@ -305,7 +292,7 @@ function indicator() {
 		return;
 
 
-    Render.StringCustom(screen_size[0] / 2 + 1, screen_size[1] - 525, 30, "F4STZSense", [100, 0, 255, 199], Render.AddFont("Verdana", 8, 600));
+        Render.ShadowedString(x / 2, y / 2 + 40, 0, "F4STZSENSE", [218, 118, 0, 255], font)
     
 
 }
@@ -313,7 +300,7 @@ function indicator() {
 
 // callbacks
 Cheat.RegisterCallback("CreateMove", "JitterPitch");
-//Cheat.RegisterCallback("CreateMove", "betterYAW1");
+Cheat.RegisterCallback("CreateMove", "ideal_tick");
 Cheat.RegisterCallback("CreateMove", "betterYaw2");
 Cheat.RegisterCallback("Draw", "betterYAW1");
 Cheat.RegisterCallback("CreateMove", "DodgeBruteforce");
