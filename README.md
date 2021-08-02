@@ -5,6 +5,7 @@ features:
 - Dodgebruteforce
 - Custom yaw
 - Faster DT
+- Ideal tick
 - Jitter pitch
 - Lagsync
 - Custom Slow Walk
